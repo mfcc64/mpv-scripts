@@ -26,44 +26,36 @@ local msg     = require 'mp.msg'
 options.read_options(opts)
 
 local function get_visualizer(name, quality)
-    local w, h, fps, count, axis_h
+    local w, h, fps
 
     if quality == "verylow" then
         w = 640
         h = 240
         fps = 30
-        count = 2
-        axis_h = 12
     elseif quality == "low" then
         w = 960
         h = 360
         fps = 30
-        count = 3
-        axis_h = 16
     elseif quality == "medium" then
         w = 1280
         h = 480
         fps = 60
-        count = 2
-        axis_h = 24
     elseif quality == "high" then
         w = 1920
         h = 720
         fps = 60
-        count = 3
-        axis_h = 32
     elseif quality == "veryhigh" then
         w = 2560
         h = 960
         fps = 60
-        count = 4
-        axis_h = 44
     else
         msg.log("error", "invalid quality")
         return ""
     end
 
     if name == "showcqt" then
+        local count = math.ceil(w * 180 / 1920 / fps)
+
         return "[aid1] asplit [ao]," ..
             "afifo, aformat     = channel_layouts = stereo," ..
             "firequalizer       =" ..
@@ -109,6 +101,8 @@ local function get_visualizer(name, quality)
 
 
     elseif name == "showcqtbar" then
+        local axis_h = math.ceil(w * 8 / 1920) * 4
+
         return "[aid1] asplit [ao]," ..
             "afifo, aformat     = channel_layouts = stereo," ..
             "firequalizer       =" ..
