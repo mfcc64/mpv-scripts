@@ -1,3 +1,4 @@
+-- various audio visualization
 
 local opts = {
     mode = "novideo",
