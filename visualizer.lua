@@ -2,7 +2,7 @@
 local opts = {
     mode = "novideo",
     -- off              disable visualization
-    -- noalbumart       enable visualization when no albumart or no video
+    -- noalbumart       enable visualization when no albumart and no video
     -- novideo          enable visualization when no video
     -- force            always enable visualization
 
