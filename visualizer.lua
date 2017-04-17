@@ -12,6 +12,7 @@ local opts = {
     -- avectorscope
     -- showspectrum
     -- showcqtbar
+    -- showwaves
 
     quality = "medium"
     -- verylow
@@ -135,6 +136,16 @@ local function get_visualizer(name, quality)
                 "y              = 0," ..
             "vflip [v1];" ..
             "[v0][v1] vstack [vo]"
+
+
+    elseif name == "showwaves" then
+        return "[aid1] asplit [ao]," ..
+            "afifo," ..
+            "showwaves          =" ..
+                "size           =" .. w .. "x" .. h .. ":" ..
+                "r              =" .. fps .. ":" ..
+                "mode           = p2p," ..
+            "format             = rgb0 [vo]"
     end
 
     msg.log("error", "invalid visualizer name")
