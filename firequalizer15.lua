@@ -131,7 +131,7 @@ end
 local function insert_filter(gain_entry)
     local graph = "firequalizer = " ..
         "wfunc      = tukey:" ..
-        "delay      = 0.01:" ..
+        "delay      = 0.028:" ..
         "scale      = linlog:" ..
         "zero_phase = on:" ..
         "gain_entry = '" .. gain_entry .. "':" ..
