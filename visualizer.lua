@@ -22,6 +22,10 @@ local opts = {
     -- veryhigh
 }
 
+if not (mp.get_property("options/lavfi-complex", "") == "") then
+    return
+end
+
 local axis_0 = "image/png;base64," ..
 "iVBORw0KGgoAAAANSUhEUgAAB4AAAAAgCAQAAABZEK0tAAAACXBIWXMAAA7EAAAOxAGVKw4bAAASO0lEQVR42u2de2wU1xXGV/IfSJEqVUJCQrIUISFFiiqhSFWkKFKFokpB1TqxHROT8ApueDgEE9u4MW4TSqFA" ..
 "3TSUQmkSChRwII6BkAQCDSYlBtc1hiSA4/CyMcYGtsZvY3t3vXu719vVPjxzz71zd+wBvnOkdvHZ78w5v7mZmbt7Z9blgsFgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWCw+9HYBFbKboe8lE1A" ..
