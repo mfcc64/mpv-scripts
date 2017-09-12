@@ -8,6 +8,7 @@ local opts = {
     -- force            always enable visualization
 
     name = "showcqt",
+    -- off
     -- showcqt
     -- avectorscope
     -- showspectrum
@@ -22,9 +23,22 @@ local opts = {
     -- veryhigh
 }
 
+-- key bindings
+-- cycle visualizer
+local cycle_key = "c"
+
 if not (mp.get_property("options/lavfi-complex", "") == "") then
     return
 end
+
+local visualizer_name_list = {
+    "off",
+    "showcqt",
+    "avectorscope",
+    "showspectrum",
+    "showcqtbar",
+    "showwaves",
+}
 
 local axis_0 = "image/png;base64," ..
 "iVBORw0KGgoAAAANSUhEUgAAB4AAAAAgCAQAAABZEK0tAAAACXBIWXMAAA7EAAAOxAGVKw4bAAASO0lEQVR42u2de2wU1xXGV/IfSJEqVUJCQrIUISFFiiqhSFWkKFKFokpB1TqxHROT8ApueDgEE9u4MW4TSqFA" ..
@@ -238,6 +252,8 @@ local function get_visualizer(name, quality)
                 "r              =" .. fps .. ":" ..
                 "mode           = p2p," ..
             "format             = rgb0 [vo]"
+    elseif name == "off" then
+        return "[aid1] afifo [ao]; [vid1] fifo [vo]"
     end
 
     msg.log("error", "invalid visualizer name")
@@ -291,3 +307,20 @@ local function visualizer_hook()
 end
 
 mp.add_hook("on_preloaded", 50, visualizer_hook)
+
+local function cycle_visualizer()
+    local i, index = 1
+    for i = 1, #visualizer_name_list do
+        if (visualizer_name_list[i] == opts.name) then
+            index = i + 1
+            if index > #visualizer_name_list then
+                index = 1
+            end
+            break
+        end
+    end
+    opts.name = visualizer_name_list[index]
+    visualizer_hook()
+end
+
+mp.add_key_binding(cycle_key, "cycle-visualizer", cycle_visualizer)
