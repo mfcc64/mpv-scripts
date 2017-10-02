@@ -196,7 +196,7 @@ local function get_visualizer(name, quality)
             "aformat            =" ..
                 "sample_rates   = 192000," ..
             "avectorscope       =" ..
-                "size           =" .. h .. "x" .. h .. ":" ..
+                "size           =" .. w .. "x" .. h .. ":" ..
                 "r              =" .. fps .. "," ..
             "format             = rgb0 [vo]"
 
