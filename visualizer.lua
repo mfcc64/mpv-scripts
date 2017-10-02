@@ -15,12 +15,15 @@ local opts = {
     -- showcqtbar
     -- showwaves
 
-    quality = "medium"
+    quality = "medium",
     -- verylow
     -- low
     -- medium
     -- high
     -- veryhigh
+
+    height = 6,
+    -- [4 .. 12]
 }
 
 -- key bindings
@@ -130,34 +133,33 @@ local options = require 'mp.options'
 local msg     = require 'mp.msg'
 
 options.read_options(opts)
+opts.height = math.min(12, math.max(4, opts.height))
+opts.height = math.floor(opts.height)
 
 local function get_visualizer(name, quality)
     local w, h, fps
 
     if quality == "verylow" then
         w = 640
-        h = 240
         fps = 30
     elseif quality == "low" then
         w = 960
-        h = 360
         fps = 30
     elseif quality == "medium" then
         w = 1280
-        h = 480
         fps = 60
     elseif quality == "high" then
         w = 1920
-        h = 720
         fps = 60
     elseif quality == "veryhigh" then
         w = 2560
-        h = 960
         fps = 60
     else
         msg.log("error", "invalid quality")
         return ""
     end
+
+    h = w * opts.height / 16
 
     if name == "showcqt" then
         local count = math.ceil(w * 180 / 1920 / fps)
