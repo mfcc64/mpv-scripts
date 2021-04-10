@@ -6,7 +6,8 @@
 
 ## Key bindings
 
-Look at the lua scripts.
+The filter is disabled by default.
+Press "C" to turn them on and switch between showcqt, avectorscope, showspectrum, showcqtbar and showwaves.
 
 ## Screenshoots
 
