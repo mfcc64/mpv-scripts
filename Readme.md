@@ -32,12 +32,3 @@ Press "C" to turn them on and switch between showcqt, avectorscope, showspectrum
 - showwaves
 
 ![showwaves](screenshoots/showwaves.jpg)
-
-### firequalizer15.lua
-
-![firequalizer15](screenshoots/firequalizer15.jpg)
-
-## Related projects
-
-- [HTML5 ShowCQTBar](https://github.com/mfcc64/html5-showcqtbar) - showcqt/showcqtbar visualizer on an HTML5 page.
-- [YouTube Musical Spectrum](https://github.com/mfcc64/youtube-musical-spectrum) - showcqt visualizer as a Chrome extension.
