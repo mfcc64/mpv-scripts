@@ -7,7 +7,7 @@ local opts = {
     -- novideo          enable visualization when no video
     -- force            always enable visualization
 
-    name = "showcqt",
+    name = "off",
     -- off
     -- showcqt
     -- avectorscope
