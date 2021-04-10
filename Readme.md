@@ -5,7 +5,7 @@
 ## Key bindings
 
 The filter is disabled by default.
-Press "C" to turn them on and switch between showcqt, avectorscope, showspectrum, showcqtbar and showwaves.
+Press "C" to turn it on and switch between showcqt, avectorscope, showspectrum, showcqtbar and showwaves.
 
 ## Screenshoots
 
