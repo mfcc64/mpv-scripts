@@ -2,8 +2,6 @@
 
 - visualizer.lua - various audio visualization.
 
-- firequalizer.lua - linear phase 15-bands equalizer.
-
 ## Key bindings
 
 The filter is disabled by default.
