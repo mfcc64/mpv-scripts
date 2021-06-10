@@ -136,7 +136,7 @@ options.read_options(opts)
 opts.height = math.min(12, math.max(4, opts.height))
 opts.height = math.floor(opts.height)
 
-local function get_visualizer(name, quality)
+local function get_visualizer(name, quality, vtrack, albumart)
     local w, h, fps
 
     if quality == "verylow" then
@@ -255,7 +255,16 @@ local function get_visualizer(name, quality)
                 "mode           = p2p," ..
             "format             = rgb0 [vo]"
     elseif name == "off" then
-        return "[aid1] afifo [ao]"
+        if vtrack > 0 or albumart > 0 then
+            return "[aid1] asetpts=PTS [ao]; [vid1] setpts=PTS [vo]"
+        else
+            return "[aid1] asetpts=PTS [ao];" ..
+                "color      =" ..
+                    "c      = Black:" ..
+                    "s      =" .. w .. "x" .. h .. ":" ..
+                    "d      = 0.04," ..
+                "format     = yuv420p [vo]"
+        end
     end
 
     msg.log("error", "invalid visualizer name")
@@ -266,15 +275,15 @@ local function select_visualizer(atrack, vtrack, albumart)
     if opts.mode == "off" then
         return ""
     elseif opts.mode == "force" then
-        return get_visualizer(opts.name, opts.quality)
+        return get_visualizer(opts.name, opts.quality, vtrack, albumart)
     elseif opts.mode == "noalbumart" then
         if albumart == 0 and vtrack == 0 then
-            return get_visualizer(opts.name, opts.quality)
+            return get_visualizer(opts.name, opts.quality, vtrack, albumart)
         end
         return ""
     elseif opts.mode == "novideo" then
         if vtrack == 0 then
-            return get_visualizer(opts.name, opts.quality)
+            return get_visualizer(opts.name, opts.quality, vtrack, albumart)
         end
         return ""
     end
@@ -297,7 +306,7 @@ local function visualizer_hook()
         else
             if mp.get_property("track-list/" .. tr .. "/type") == "video" then
                 if mp.get_property("track-list/" .. tr .. "/albumart") == "yes" then
-                    albumart = albumart + 1
+                    albumart = 1
                 else
                     vtrack = vtrack + 1
                 end
