@@ -1,32 +1,42 @@
-## Various mpv lua scripts
+## Waveform Monitor LUA Script for MPV
 
+- VideoTek.lua is a waveform monitor for MPV.
 - visualizer.lua is a script that shows various audio visualization for MPV.
 
 ## Key bindings
 
-The filter is disabled by default.
-Press "C" to turn it on and switch between showcqt, avectorscope, showspectrum, showcqtbar and showwaves.
+Both filters are disabled by default.
+<br>
+Press "Y" to turn on "VideoTek" and have a waveform monitor for luma, chroma, phase and loudness.
+<br>
+Press "C" to turn on "Visualizer" and switch between showcqt, avectorscope, showspectrum, showcqtbar and showwaves.
+<br>
 
-## Screenshoots
+## Screenshots
+
+### VideoTek.lua
+
+![VideoTek](Screenshots/VideoTek1.jpg)
+
 
 ### visualizer.lua
 
 - showcqt
 
-![showcqt](screenshoots/showcqt.jpg)
+![showcqt](Screenshots/showcqt.jpg)
 
 - avectorscope
 
-![avectorscope](screenshoots/avectorscope.jpg)
+![avectorscope](Screenshots/avectorscope.jpg)
 
 - showspectrum
 
-![showspectrum](screenshoots/showspectrum.jpg)
+![showspectrum](Screenshots/showspectrum.jpg)
 
 - showcqtbar
 
-![showcqtbar](screenshoots/showcqtbar.jpg)
+![showcqtbar](Screenshots/showcqtbar.jpg)
 
 - showwaves
 
-![showwaves](screenshoots/showwaves.jpg)
+![showwaves](Screenshots/showwaves.jpg)
