@@ -40,3 +40,7 @@ Press "C" to turn on "Visualizer" and switch between showcqt, avectorscope, show
 - showwaves
 
 ![showwaves](Screenshots/showwaves.jpg)
+
+### Contributors
+- mfcc64 for the audio visualizers.
+- Livio Aloja & Francesco Bucciantini for VideoTek.
