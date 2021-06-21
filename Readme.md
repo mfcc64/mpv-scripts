@@ -16,7 +16,7 @@ Press "C" to turn on "Visualizer" and switch between showcqt, avectorscope, show
 
 ### VideoTek.lua
 
-![VideoTek](Screenshots/VideoTek1.jpg)
+![VideoTek](Screenshots/VideoTek.jpg)
 
 
 ### visualizer.lua
