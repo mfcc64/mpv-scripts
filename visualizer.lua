@@ -250,6 +250,7 @@ local function get_visualizer(name, quality, vtrack, albumart)
         return "[aid1] asplit [ao]," ..
             "afifo," ..
             "showwaves          =" ..
+                "colors         = #ffffff|#ffffff:" ..
                 "size           =" .. w .. "x" .. h .. ":" ..
                 "r              =" .. fps .. ":" ..
                 "mode           = p2p," ..
