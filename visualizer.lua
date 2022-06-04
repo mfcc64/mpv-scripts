@@ -304,7 +304,7 @@ local function visualizer_hook()
 
     mp.set_property("options/lavfi-complex", select_visualizer(vtrack))
 end
-
+mp.observe_property("current-tracks/audio", "native", function(name, value) visualizer_hook() end )
 mp.observe_property("current-tracks/video", "native", function(name, value) visualizer_hook() end )
 
 local function cycle_visualizer()
