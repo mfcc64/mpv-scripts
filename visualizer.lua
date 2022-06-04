@@ -255,7 +255,14 @@ local function get_visualizer(name, quality, vtrack)
                 "mode           = p2p," ..
             "format             = rgb0 [vo]"
     elseif name == "off" then
-        if vtrack ~= nil then
+        local hasvideo = false
+        for id, track in ipairs(mp.get_property_native("track-list")) do
+            if track.type == "video" then
+                hasvideo = true
+                break
+            end
+        end
+        if hasvideo then
             return "[aid1] asetpts=PTS [ao]; [vid1] setpts=PTS [vo]"
         else
             return "[aid1] asetpts=PTS [ao];" ..
@@ -291,9 +298,9 @@ local function select_visualizer(vtrack)
     return ""
 end
 
+local current_visualizer = ""
 local function visualizer_hook()
     local count = mp.get_property_number("track-list/count", -1)
-    msg.info("visualizer_hook " .. count)
     if count <= 0 then
         return
     end
@@ -301,7 +308,14 @@ local function visualizer_hook()
     local atrack = mp.get_property_native("current-tracks/audio")
     local vtrack = mp.get_property_native("current-tracks/video")
 
-    mp.set_property("options/lavfi-complex", select_visualizer(vtrack))
+    --prevent endless loop
+    if current_visualizer ~= opts.name then
+        local lavfi = select_visualizer(vtrack)
+        if lavfi ~= "" then
+            current_visualizer = opts.name
+        end
+        mp.set_property("options/lavfi-complex", lavfi)
+    end
 end
 mp.observe_property("current-tracks/audio", "native", function(name, value) visualizer_hook() end )
 mp.observe_property("current-tracks/video", "native", function(name, value) visualizer_hook() end )
