@@ -261,8 +261,7 @@ local function get_visualizer(name, quality, vtrack)
             return "[aid1] asetpts=PTS [ao];" ..
                 "color      =" ..
                     "c      = Black:" ..
-                    "s      =" .. w .. "x" .. h .. ":" ..
-                    "d      = 0.04," ..
+                    "s      =" .. w .. "x" .. h .. "," ..
                 "format     = yuv420p [vo]"
         end
     end
