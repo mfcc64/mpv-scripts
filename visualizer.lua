@@ -309,9 +309,9 @@ local function visualizer_hook()
     local vtrack = mp.get_property_native("current-tracks/video")
 
     --no tracks selected (yet)
-    if atrack == nil and vtrack == nil and mp.get_property("vid") ~= "no" then
+    if atrack == nil and vtrack == nil then
         for id, track in ipairs(mp.get_property_native("track-list")) do
-            if track.type == "video" and (vtrack == nil or vtrack.albumart == true) then
+            if track.type == "video" and (vtrack == nil or vtrack.albumart == true) and mp.get_property("vid") ~= "no" then
                 vtrack = track
             elseif track.type == "audio" then
                 atrack = track
