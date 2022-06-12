@@ -308,6 +308,17 @@ local function visualizer_hook()
     local atrack = mp.get_property_native("current-tracks/audio")
     local vtrack = mp.get_property_native("current-tracks/video")
 
+    --no tracks selected (yet)
+    if atrack == nil and vtrack == nil and mp.get_property("vid") ~= "no" then
+        for id, track in ipairs(mp.get_property_native("track-list")) do
+            if track.type == "video" and (vtrack == nil or vtrack.albumart == true) then
+                vtrack = track
+            elseif track.type == "audio" then
+                atrack = track
+            end
+        end
+    end
+
     --prevent endless loop
     if current_visualizer ~= opts.name then
         local lavfi = select_visualizer(vtrack)
@@ -317,8 +328,10 @@ local function visualizer_hook()
         mp.set_property("options/lavfi-complex", lavfi)
     end
 end
-mp.observe_property("current-tracks/audio", "native", function(name, value) visualizer_hook() end )
-mp.observe_property("current-tracks/video", "native", function(name, value) visualizer_hook() end )
+
+mp.add_hook("on_preloaded", 50, visualizer_hook)
+mp.observe_property("current-tracks/audio", "native", visualizer_hook)
+mp.observe_property("current-tracks/video", "native", visualizer_hook)
 
 local function cycle_visualizer()
     local i, index = 1
