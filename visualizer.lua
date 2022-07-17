@@ -305,6 +305,11 @@ local function visualizer_hook()
         return
     end
 
+    -- if there wouldn't be a window without the visualizer, then don't activate it
+    if mp.get_property('force-window') == "no" and not mp.get_property_native("current-vo") then
+        return
+    end
+
     local atrack = mp.get_property_native("current-tracks/audio")
     local vtrack = mp.get_property_native("current-tracks/video")
 
