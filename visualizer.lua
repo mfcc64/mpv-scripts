@@ -283,12 +283,12 @@ local function select_visualizer(vtrack)
     elseif opts.mode == "force" then
         return get_visualizer(opts.name, opts.quality, vtrack)
     elseif opts.mode == "noalbumart" then
-        if vtrack == nil or vtrack.albumart then
+        if vtrack == nil then
             return get_visualizer(opts.name, opts.quality, vtrack)
         end
         return ""
     elseif opts.mode == "novideo" then
-        if vtrack == nil then
+        if vtrack == nil or vtrack.albumart then
             return get_visualizer(opts.name, opts.quality, vtrack)
         end
         return ""
