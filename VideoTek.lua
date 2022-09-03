@@ -53,13 +53,7 @@ local msg     = require 'mp.msg'
 
 options.read_options(opts)
 
-
-
-
 local function get_visualizer(name)
-
-
-
 
 
 -- Here we define the Graph
