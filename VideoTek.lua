@@ -11,8 +11,7 @@ local opts = {
 
     name = "off",
     -- off
-    -- akatecktronik
-	-- zero
+    -- tektronix
 
 
 
@@ -40,8 +39,7 @@ end
 
 local visualizer_name_list = {
     "off",
-    "akatecktronik",
-	"zero",
+    "tektronix",
 }
 
 
@@ -77,13 +75,15 @@ local function get_visualizer(name, quality)
 
 
 -- Here we define the Graph
-   if name == "akatecktronik" then
+   if name == "tektronix" then
         return "color=c=black:s="..w.."x"..h.."[black];[vid1]split=3[v1][v2][v3];[aid1]asplit[a1][a2];[a1]avectorscope=s=240x160:zoom=2:rc=2:gc=200:bc=10:rf=1:gf=8:bf=7[avect-out];[a2]showvolume=r=25:w=140:h=10:t=0:f=0.9[vol-out];[v1]scale=640x360[v1-o];[v2]hflip,waveform=m=1:d=0:r=1:c=7,scale=640x360,setsar=1,hflip[v2-o];[v3]vectorscope=m=0:g=green,scale=300x300,setsar=1[vect];[black][v1-o]overlay=0:0[q1];[q1][vol-out]overlay=640:0[q2];[q2][v2-o]overlay=0:360[q3];[q3][avect-out]overlay=1000:490[q4];[q4][vect]overlay=700:390[vo]"
 	elseif name == "zero" then
         return "[vid1]"..
 		"scale".."="..w.."x"..h.."[vo]"
-	elseif name == "off" then
-        return "[aid1] afifo [ao]"
+	--elseif name == "off" then
+        --return "[aid1] afifo [ao]"
+        elseif name == "off" then
+        return "[aid1] asetpts=PTS [ao]; [vid1] setpts=PTS [vo]"
     end
     msg.log("error", "invalid visualizer name")
     return ""
