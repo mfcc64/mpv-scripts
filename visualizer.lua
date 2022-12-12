@@ -298,7 +298,6 @@ local function select_visualizer(vtrack)
     return ""
 end
 
-local current_visualizer = ""
 local function visualizer_hook()
     local count = mp.get_property_number("track-list/count", -1)
     if count <= 0 then
@@ -324,12 +323,9 @@ local function visualizer_hook()
         end
     end
 
+    local lavfi = select_visualizer(vtrack)
     --prevent endless loop
-    if current_visualizer ~= opts.name then
-        local lavfi = select_visualizer(vtrack)
-        if lavfi ~= "" then
-            current_visualizer = opts.name
-        end
+    if lavfi ~= mp.get_property("options/lavfi-complex", "") then
         mp.set_property("options/lavfi-complex", lavfi)
     end
 end
