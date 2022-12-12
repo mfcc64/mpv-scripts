@@ -24,6 +24,10 @@ local opts = {
 
     height = 6,
     -- [4 .. 12]
+
+    forcewindow = true,
+    -- true (yes)       always run visualizer regardless of force-window settings
+    -- false (no)       does not run visualizer when force-window is no
 }
 
 -- key bindings
@@ -135,6 +139,10 @@ local msg     = require 'mp.msg'
 options.read_options(opts)
 opts.height = math.min(12, math.max(4, opts.height))
 opts.height = math.floor(opts.height)
+
+if not opts.forcewindow and mp.get_property('force-window') == "no" then
+    return
+end
 
 local function get_visualizer(name, quality, vtrack)
     local w, h, fps
@@ -301,11 +309,6 @@ end
 local function visualizer_hook()
     local count = mp.get_property_number("track-list/count", -1)
     if count <= 0 then
-        return
-    end
-
-    -- if there wouldn't be a window without the visualizer, then don't activate it
-    if mp.get_property('force-window') == "no" and not mp.get_property_native("current-vo") then
         return
     end
 
