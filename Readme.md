@@ -41,6 +41,9 @@ Press "C" to turn on "Visualizer" and switch between showcqt, avectorscope, show
 
 ![showwaves](Screenshots/showwaves.jpg)
 
+### firequalizer15.lua
+![firequalizer15](Screenshots/firequalizer15.jpg)
+
 ### Contributors
 - mfcc64 for the audio visualizers.
 - Livio Aloja & Francesco Bucciantini for VideoTek.
