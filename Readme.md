@@ -2,6 +2,7 @@
 
 - VideoTek.lua is a waveform monitor for MPV.
 - visualizer.lua is a script that shows various audio visualization for MPV.
+- firequalizer.lua - linear phase 15-bands equalizer.
 
 ## Key bindings
 
