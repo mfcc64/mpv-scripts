@@ -173,7 +173,7 @@ local function get_visualizer(name, quality, vtrack)
         local count = math.ceil(w * 180 / 1920 / fps)
 
         return "[aid1] asplit [ao]," ..
-            "afifo, aformat     = channel_layouts = stereo," ..
+            "aformat            = channel_layouts = stereo," ..
             "firequalizer       =" ..
                 "gain           = '1.4884e8 * f*f*f / (f*f + 424.36) / (f*f + 1.4884e8) / sqrt(f*f + 25122.25)':" ..
                 "scale          = linlin:" ..
@@ -200,7 +200,6 @@ local function get_visualizer(name, quality, vtrack)
 
     elseif name == "avectorscope" then
         return "[aid1] asplit [ao]," ..
-            "afifo," ..
             "aformat            =" ..
                 "sample_rates   = 192000," ..
             "avectorscope       =" ..
@@ -211,7 +210,6 @@ local function get_visualizer(name, quality, vtrack)
 
     elseif name == "showspectrum" then
         return "[aid1] asplit [ao]," ..
-            "afifo," ..
             "showspectrum       =" ..
                 "size           =" .. w .. "x" .. h .. ":" ..
                 "win_func       = blackman [vo]"
@@ -221,7 +219,7 @@ local function get_visualizer(name, quality, vtrack)
         local axis_h = math.ceil(w * 12 / 1920) * 4
 
         return "[aid1] asplit [ao]," ..
-            "afifo, aformat     = channel_layouts = stereo," ..
+            "aformat            = channel_layouts = stereo," ..
             "firequalizer       =" ..
                 "gain           = '1.4884e8 * f*f*f / (f*f + 424.36) / (f*f + 1.4884e8) / sqrt(f*f + 25122.25)':" ..
                 "scale          = linlin:" ..
@@ -256,7 +254,6 @@ local function get_visualizer(name, quality, vtrack)
 
     elseif name == "showwaves" then
         return "[aid1] asplit [ao]," ..
-            "afifo," ..
             "showwaves          =" ..
                 "size           =" .. w .. "x" .. h .. ":" ..
                 "r              =" .. fps .. ":" ..
