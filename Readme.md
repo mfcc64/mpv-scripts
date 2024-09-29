@@ -45,6 +45,10 @@ Press "C" to turn on "Visualizer" and switch between showcqt, avectorscope, show
 ### firequalizer15.lua
 ![firequalizer15](Screenshots/firequalizer15.jpg)
 
+## Related projects
+- [HTML5 ShowCQTBar](https://github.com/mfcc64/html5-showcqtbar) - showcqt/showcqtbar visualizer on an HTML5 page.
+- [YouTube Musical Spectrum](https://github.com/mfcc64/youtube-musical-spectrum) - showcqt visualizer as a Chrome extension.
+
 ### Contributors
 - mfcc64 for the audio visualizers.
 - Livio Aloja & Francesco Bucciantini for VideoTek.
