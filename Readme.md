@@ -1,42 +1,54 @@
-## Various mpv lua scripts
+## Waveform Monitor LUA Script for MPV
 
-- visualizer.lua - various audio visualization.
-
+- VideoTek.lua is a waveform monitor for MPV.
+- visualizer.lua is a script that shows various audio visualization for MPV.
 - firequalizer.lua - linear phase 15-bands equalizer.
 
 ## Key bindings
 
-Look at the lua scripts.
+Both filters are disabled by default.
+<br>
+Press "Y" to turn on "VideoTek" and have a waveform monitor for luma, chroma, phase and loudness.
+<br>
+Press "C" to turn on "Visualizer" and switch between showcqt, avectorscope, showspectrum, showcqtbar and showwaves.
+<br>
 
-## Screenshoots
+## Screenshots
+
+### VideoTek.lua
+
+![VideoTek](Screenshots/VideoTek.jpg)
+
 
 ### visualizer.lua
 
 - showcqt
 
-![showcqt](screenshoots/showcqt.jpg)
+![showcqt](Screenshots/showcqt.jpg)
 
 - avectorscope
 
-![avectorscope](screenshoots/avectorscope.jpg)
+![avectorscope](Screenshots/avectorscope.jpg)
 
 - showspectrum
 
-![showspectrum](screenshoots/showspectrum.jpg)
+![showspectrum](Screenshots/showspectrum.jpg)
 
 - showcqtbar
 
-![showcqtbar](screenshoots/showcqtbar.jpg)
+![showcqtbar](Screenshots/showcqtbar.jpg)
 
 - showwaves
 
-![showwaves](screenshoots/showwaves.jpg)
+![showwaves](Screenshots/showwaves.jpg)
 
 ### firequalizer15.lua
-
-![firequalizer15](screenshoots/firequalizer15.jpg)
+![firequalizer15](Screenshots/firequalizer15.jpg)
 
 ## Related projects
-
 - [HTML5 ShowCQTBar](https://github.com/mfcc64/html5-showcqtbar) - showcqt/showcqtbar visualizer on an HTML5 page.
 - [YouTube Musical Spectrum](https://github.com/mfcc64/youtube-musical-spectrum) - showcqt visualizer as a Chrome extension.
+
+### Contributors
+- mfcc64 for the audio visualizers.
+- Livio Aloja & Francesco Bucciantini for VideoTek.
