@@ -282,8 +282,8 @@ local function get_visualizer(name, quality, vtrack)
     return ""
 end
 
-local function select_visualizer(vtrack)
-    if opts.mode == "off" then
+local function select_visualizer(vtrack, atrack)
+    if atrack == nil or opts.mode == "off" then
         return ""
     elseif opts.mode == "force" then
         return get_visualizer(opts.name, opts.quality, vtrack)
@@ -323,10 +323,10 @@ local function visualizer_hook()
         end
     end
 
-    local lavfi = select_visualizer(vtrack)
+    local lavfi = select_visualizer(vtrack, atrack)
     --prevent endless loop
-    if lavfi ~= mp.get_property("options/lavfi-complex", "") then
-        mp.set_property("options/lavfi-complex", lavfi)
+    if lavfi ~= "" and lavfi ~= mp.get_property("lavfi-complex", "") then
+        mp.set_property("file-local-options/lavfi-complex", lavfi)
     end
 end
 
